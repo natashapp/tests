@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+    <meta charset="utf-8" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="msapplication-tap-highlight" content="no" />
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
+
+    <link rel="stylesheet" type="text/css" href="css/topcoat-mobile-dark.css" />
+    <!--<link rel="stylesheet" type="text/css" href="css/my.css"></link>-->
+
+    <script src="lib/jquery-2.1.1.js"></script>
+    <script src="lib/handlebars-v1.3.0.js"></script>
+    <script data-main="js/main" src="lib/require.js"></script>
+    <script data-main="app" src="lib/require.js"></script>
+
+
+    <title>Personality Test</title>
+
+</head>
+
+<body>
+    <div id="pageContainer">
+
+    </div>
+
+    <div id="templateContainer" style="display:none">
+        <!-- All Test Page -->
+        <div id="allTestPage">
+            <div class="topcoat-list">
+                <h3 class="topcoat-list__header">Available test</h3>
+                <ul id="testContainer" class="topcoat-list__container">
+                    {{#each test}}
+                    <li id="test_{{id}}" class="topcoat-list__item" onclick="startTest('{{id}}')">
+                        <div style="float:left">{{name}}</div>
+                        <div style="float:right">{{free}}</div>
+                        <div style="clear:both;"></div>
+                    </li>
+                    {{/each}}
+                </ul>
+            </div>
+        </div>
+        <!-- //--->
+        <!-- intro page -->
+        <div id="testStartPage">
+            <div class="topcoat-list">
+                <h3 class="topcoat-list__header">{{name}}</h3>
+                <p> ppppkkkkk 
+                    {{intro}}
+                </p>
+                <p>
+                    <button class="topcoat-button--large--quiet" onclick="showNextQuestion()" style="float:right;margin:20px;">Start test</button>
+                </p>
+            </div>
+        </div>
+        <!--//-->
+        <!-- Question page -->
+        <div id="questionPage">
+            <h3 class="topcoat-list__header">{{name}}</h3>
+            <ul class="options">
+                {{#each answers.answer}}
+                <li style="list">
+                    <label class="topcoat-checkbox">
+                        <input type="checkbox" id="option_{{id}}" onclick="selectItem({{id}})">
+                        <div class="topcoat-checkbox__checkmark"></div>
+                        {{name}}
+                    </label>
+                </li>
+                {{/each}}
+            </ul>
+
+        </div>
+        <!-- //--->
+        <!--Results page-->
+        <div id="resultPage">
+            <h3 class="topcoat-list__header">Results</h3>
+            {{#each item}}
+            <p>
+                <h4>{{means}}</h4>
+                <p>{{answer}}</p>
+            </p>
+            {{/each}}
+            <p>
+                <button class="topcoat-button--large--quiet" onclick="goHome()" style="float:left;margin:20px;">Home</button>
+            </p>
+        </div>
+        <!-- //--->
+
+        <!-- test menu -->
+        <div id="innerTestsMenu">
+            <button class="topcoat-button--large--quiet" onclick="goHome()" style="float:left;margin:20px;">Home</button>
+            {{#if last}}
+            <button class="topcoat-button--large--quiet" onclick="showNextQuestion()" style="float:right;margin:20px;">Finish</button>
+            {{else}}
+            <button class="topcoat-button--large--quiet" onclick="showNextQuestion()" style="float:right;margin:20px;">&gt;&gt;</button>
+            {{/if}} {{#if first}} {{else}}
+            <button class="topcoat-button--large--quiet" onclick="showPreviousQuestion()" style="float:right;margin:20px;">&lt;&lt;</button>
+            {{/if}} {{name}}
+
+            <div style="clear:both"></div>
+        </div>
+    </div>
+</body>
+
+</html>
