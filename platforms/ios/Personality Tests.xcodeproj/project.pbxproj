@@ -39,6 +39,9 @@
 		D4A0D8761607E02300AEF8BB /* Default-568h@2x~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = D4A0D8751607E02300AEF8BB /* Default-568h@2x~iphone.png */; };
 		35357BE895E44BC0BDD995BA /* CDVStatusBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 99790BF506F046B0AE216D5E /* CDVStatusBar.m */; };
 		0EAEDA4A2ADF49CF8901426E /* CDVDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CD41A1F46014CA5AC34114B /* CDVDevice.m */; };
+		644CC8FF9B0E474BB5CFE20E /* CDVFile.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CD2E18DECE74D58AD1FB9D7 /* CDVFile.m */; };
+		E44FFFBBD0794581A251B6E4 /* CDVLocalFilesystem.m in Sources */ = {isa = PBXBuildFile; fileRef = 493052004F9F4A078743BE79 /* CDVLocalFilesystem.m */; };
+		A3339947DDD64AD996084474 /* CDVAssetLibraryFilesystem.m in Sources */ = {isa = PBXBuildFile; fileRef = 56F4A1FD91C04D95A8EB295B /* CDVAssetLibraryFilesystem.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -106,6 +109,12 @@
 		2E80456365CB41C18AFF6940 /* CDVStatusBar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "CDVStatusBar.h"; path = "org.apache.cordova.statusbar/CDVStatusBar.h"; sourceTree = "<group>"; fileEncoding = 4; };
 		8CD41A1F46014CA5AC34114B /* CDVDevice.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "CDVDevice.m"; path = "org.apache.cordova.device/CDVDevice.m"; sourceTree = "<group>"; fileEncoding = 4; };
 		EAB492F4D5274F0BBB569F7F /* CDVDevice.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "CDVDevice.h"; path = "org.apache.cordova.device/CDVDevice.h"; sourceTree = "<group>"; fileEncoding = 4; };
+		9CD2E18DECE74D58AD1FB9D7 /* CDVFile.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "CDVFile.m"; path = "org.apache.cordova.file/CDVFile.m"; sourceTree = "<group>"; fileEncoding = 4; };
+		493052004F9F4A078743BE79 /* CDVLocalFilesystem.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "CDVLocalFilesystem.m"; path = "org.apache.cordova.file/CDVLocalFilesystem.m"; sourceTree = "<group>"; fileEncoding = 4; };
+		56F4A1FD91C04D95A8EB295B /* CDVAssetLibraryFilesystem.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "CDVAssetLibraryFilesystem.m"; path = "org.apache.cordova.file/CDVAssetLibraryFilesystem.m"; sourceTree = "<group>"; fileEncoding = 4; };
+		E1D4970792D5467B83E7FC1E /* CDVFile.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "CDVFile.h"; path = "org.apache.cordova.file/CDVFile.h"; sourceTree = "<group>"; fileEncoding = 4; };
+		29AFD1F2A8544088BE082919 /* CDVLocalFilesystem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "CDVLocalFilesystem.h"; path = "org.apache.cordova.file/CDVLocalFilesystem.h"; sourceTree = "<group>"; fileEncoding = 4; };
+		164D3782F2384FCC86670621 /* CDVAssetLibraryFilesystem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "CDVAssetLibraryFilesystem.h"; path = "org.apache.cordova.file/CDVAssetLibraryFilesystem.h"; sourceTree = "<group>"; fileEncoding = 4; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -228,6 +237,12 @@
 				2E80456365CB41C18AFF6940 /* CDVStatusBar.h */,
 				8CD41A1F46014CA5AC34114B /* CDVDevice.m */,
 				EAB492F4D5274F0BBB569F7F /* CDVDevice.h */,
+				9CD2E18DECE74D58AD1FB9D7 /* CDVFile.m */,
+				493052004F9F4A078743BE79 /* CDVLocalFilesystem.m */,
+				56F4A1FD91C04D95A8EB295B /* CDVAssetLibraryFilesystem.m */,
+				E1D4970792D5467B83E7FC1E /* CDVFile.h */,
+				29AFD1F2A8544088BE082919 /* CDVLocalFilesystem.h */,
+				164D3782F2384FCC86670621 /* CDVAssetLibraryFilesystem.h */,
 			);
 			name = Plugins;
 			path = "Personality Tests/Plugins";
@@ -424,6 +439,9 @@
 				302D95F114D2391D003F00A1 /* MainViewController.m in Sources */,
 				35357BE895E44BC0BDD995BA /* CDVStatusBar.m in Sources */,
 				0EAEDA4A2ADF49CF8901426E /* CDVDevice.m in Sources */,
+				644CC8FF9B0E474BB5CFE20E /* CDVFile.m in Sources */,
+				E44FFFBBD0794581A251B6E4 /* CDVLocalFilesystem.m in Sources */,
+				A3339947DDD64AD996084474 /* CDVAssetLibraryFilesystem.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

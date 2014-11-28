@@ -4,105 +4,136 @@
 
 <head>
 
-    <meta charset="utf-8" />
-    <meta name="format-detection" content="telephone=no" />
-    <meta name="msapplication-tap-highlight" content="no" />
-    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
+<meta charset="utf-8" />
+<meta name="format-detection" content="telephone=no" />
+<meta name="msapplication-tap-highlight" content="no" />
+<meta name="viewport"
+	content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
 
-    <link rel="stylesheet" type="text/css" href="css/topcoat-mobile-dark.css" />
-    <!--<link rel="stylesheet" type="text/css" href="css/my.css"></link>-->
+<link rel="stylesheet" type="text/css" href="css/app.css" />
 
-    <script src="lib/jquery-2.1.1.js"></script>
-    <script src="lib/handlebars-v1.3.0.js"></script>
-    <script data-main="js/main" src="lib/require.js"></script>
-    <script data-main="app" src="lib/require.js"></script>
+<script src="lib/jquery-2.1.1.js"></script>
+<script src="lib/handlebars-v1.3.0.js"></script>
 
+<script src="js/fsTests.js" ></script>
+<script data-main="js/main" src="lib/require.js"></script>
+<script data-main="app" src="lib/require.js"></script>
 
-    <title>Personality Test</title>
+<script type="text/javascript" charset="utf-8" src="cordova.js"></script>
+
+<title>Personality Test</title>
 
 </head>
 
-<body >
-    <div id="pageContainer">
+<body>
+	<div  id="pContainer" class="pageT centerT"></div>
+  	
+	<span id="templateContainer" style="display: none">
+		<!-- All Test Page -->
+		<div id="allTestPage">
+			<div>
+				<ul id="testContainer" class="topcoat-list__container">
+					{{#each test}}
+					<li class="testListItem" onclick="startTest({{id}})">
+						<div class="testItemLeft" style="padding-top: 10px;"></div>
+						<div class="testItemRight" style="display: table-cell;">
+							<div class="left" style="padding: 20px">
+								<b>{{name}}</b> <br>{{decription}}
+							</div>
+							<div class="clear"></div>
+						</div>
+					</li> {{/each}}
+				</ul>
+			</div>
+		</div>
+		<!-- //--->
+		<!-- intro page -->
+		<div id="testStartPage">
+			<div class="page">
+				<h3>{{name}}</h3>
+				<p>{{intro}}</p>
+				<br> <br>
+				<p>
+					<button class="app_button_large liner" onclick="showNextQuestion()">[
+						Start test ]</button>
+				</p>
+			</div>
+		</div>
+		<!--//-->
+		<!-- Question page -->
+		<div id="questionPage">
+			<div class="page">
+				<h3>{{name}}</h3>
+				<ul class="questionList">
+					{{#each answers.answer}}
+					<li style="margin:20px 0px;"><label class="topcoat-checkbox"><input
+							type="checkbox" id="option_{{id}}" onclick="checkItem({{id}})">
+							<div class="topcoat-checkbox__checkmark"></div>{{name}}
+					</label>
+					</li>{{/each}}
+				</ul>
 
-    </div>
+				<br> <br> Question {{number}} of {{testLength}}
+				<p>
+					<button id="showNextQuestion" class="app_button_large liner" >
+					Please select your answer 
+					</button>
+				</p>
+			</div>
+		</div>
+		<!-- //--->
+		<!--Results page-->
+		<div id="resultPage">
+			<div class="page">
+				
+				{{#each item}}
+				<p>
+				<h4>{{means}}</h4>
+				<p>{{answer}}</p>
+				</p>
+				{{/each}}
+				<p>
+					<button id="showNextQuestion" class="app_button_large liner" onclick="mainSaveTest()" >
+					[ Save test results ]
+					</button>
+				</p>
+			</div>
+		</div>
+		<!-- //--->
 
-    <div id="templateContainer" style="display:none">
-        <!-- All Test Page -->
-        <div id="allTestPage">
-            <div class="topcoat-list">
-                <h3 class="topcoat-list__header">Available test</h3>
-                <ul id="testContainer" class="topcoat-list__container">
-                    {{#each test}}
-                    <li id="test_{{id}}" class="topcoat-list__item" onclick="startTest('{{id}}')">
-                        <div style="float:left">{{name}}</div>
-                        <div style="float:right">{{free}}</div>
-                        <div style="clear:both;"></div>
-                    </li>
-                    {{/each}}
-                </ul>
-            </div>
-        </div>
-        <!-- //--->
-        <!-- intro page -->
-        <div id="testStartPage">
-            <div class="topcoat-list">
-                <h3 class="topcoat-list__header">{{name}}</h3>
-                <p> ppppkkkkk 
-                    {{intro}}
-                </p>
-                <p>
-                    <button class="topcoat-button--large--quiet" onclick="showNextQuestion()" style="float:right;margin:20px;">Start test</button>
-                </p>
-            </div>
-        </div>
-        <!--//-->
-        <!-- Question page -->
-        <div id="questionPage">
-            <h3 class="topcoat-list__header">{{name}}</h3>
-            <ul class="options">
-                {{#each answers.answer}}
-                <li style="list">
-                    <label class="topcoat-checkbox">
-                        <input type="checkbox" id="option_{{id}}" onclick="selectItem({{id}})">
-                        <div class="topcoat-checkbox__checkmark"></div>
-                        {{name}}
-                    </label>
-                </li>
-                {{/each}}
-            </ul>
 
-        </div>
-        <!-- //--->
-        <!--Results page-->
-        <div id="resultPage">
-            <h3 class="topcoat-list__header">Results</h3>
-            {{#each item}}
-            <p>
-                <h4>{{means}}</h4>
-                <p>{{answer}}</p>
-            </p>
-            {{/each}}
-            <p>
-                <button class="topcoat-button--large--quiet" onclick="goHome()" style="float:left;margin:20px;">Home</button>
-            </p>
-        </div>
-        <!-- //--->
+		<!--Results page-->
+		<div id="savedTestList">
+			<div class="page">
+				<h3> Saved test list</h3>
+				{{#each item}}
+				<p>
+				<p>{{name}} - {{date}}</p>
+				</p>
+				{{/each}}
+			</div>
+		</div>
+		<!-- //--->
 
-        <!-- test menu -->
-        <div id="innerTestsMenu">
-            <button class="topcoat-button--large--quiet" onclick="goHome()" style="float:left;margin:20px;">Home</button>
-            {{#if last}}
-            <button class="topcoat-button--large--quiet" onclick="showNextQuestion()" style="float:right;margin:20px;">Finish</button>
-            {{else}}
-            <button class="topcoat-button--large--quiet" onclick="showNextQuestion()" style="float:right;margin:20px;">&gt;&gt;</button>
-            {{/if}} {{#if first}} {{else}}
-            <button class="topcoat-button--large--quiet" onclick="showPreviousQuestion()" style="float:right;margin:20px;">&lt;&lt;</button>
-            {{/if}} {{name}}
+	
+		<!-- toolbox -->
+		<div id="toolbox">
+			<div style="float: left;">
+				{{#each leftButton}} <input class="button" type="button"
+					value="{{value}}" onclick="{{action}}" />{{/each}}
+			</div>
+			{{#if title}}
+			<h3 class="header">{{title}}</h3>
+			{{/if}}
+			<div style="float: right">
+				{{#each rightButton}} <input type="button" class="button"
+					value="{{value}}" onclick="{{action}}" />{{/each}}
+			</div>
+			<div style="clear:both"></div>
 
-            <div style="clear:both"></div>
-        </div>
-    </div>
+		</div>
+	</span>
+	
 </body>
 
 </html>

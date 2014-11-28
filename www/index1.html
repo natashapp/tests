@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="format-detection" content="telephone=no" />
+<meta name="msapplication-tap-highlight" content="no" />
+<meta name="viewport"
+	content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
+
+<link rel="stylesheet" type="text/css" href="css/app.css" />
+
+<script src="lib/jquery-2.1.1.js"></script>
+<script src="lib/handlebars-v1.3.0.js"></script>
+<script data-main="js/main" src="lib/require.js"></script>
+<script data-main="app" src="lib/require.js"></script>
+
+
+<title>Personality Test</title>
+
+</head>
+
+<body>
+	<div  id="pContainer" class="pageT centerT"></div>
+  	
+	<span id="templateContainer" style="display: none">
+		<!-- All Test Page -->
+		<div id="allTestPage">
+			<div>
+				<ul id="testContainer" class="topcoat-list__container">
+					{{#each test}}
+					<li class="testListItem" onclick="startTest({{id}})">
+						<div class="testItemLeft" style="padding-top: 10px;"></div>
+						<div class="testItemRight" style="display: table-cell;">
+							<div class="left" style="padding: 20px">
+								<b>{{name}}</b> <br>{{decription}}
+							</div>
+							<div class="clear"></div>
+						</div>
+					</li> {{/each}}
+				</ul>
+			</div>
+		</div>
+		<!-- //--->
+		<!-- intro page -->
+		<div id="testStartPage">
+			<div class="page">
+				<h3>{{name}}</h3>
+				<p>{{intro}}</p>
+				<br> <br>
+				<p>
+					<button class="app_button_large liner" onclick="showNextQuestion()">[
+						Start test ]</button>
+				</p>
+			</div>
+		</div>
+		<!--//-->
+		<!-- Question page -->
+		<div id="questionPage">
+			<div class="page">
+				<h3>{{name}}</h3>
+				<ul class="questionList">
+					{{#each answers.answer}}
+					<li style="margin:20px 0px;"><label class="topcoat-checkbox"><input
+							type="checkbox" id="option_{{id}}" onclick="checkItem({{id}})">
+							<div class="topcoat-checkbox__checkmark"></div>{{name}}
+					</label>
+					</li>{{/each}}
+				</ul>
+
+				<br> <br> Question {{number}} of {{testLength}}
+				<p>
+					<button id="showNextQuestion" class="app_button_large liner" >
+					Please select your answer 
+					</button>
+				</p>
+			</div>
+		</div>
+		<!-- //--->
+		<!--Results page-->
+		<div id="resultPage">
+			<div class="page">
+				
+				{{#each item}}
+				<p>
+				<h4>{{means}}</h4>
+				<p>{{answer}}</p>
+				</p>
+				{{/each}}
+				<p>
+					<button id="showNextQuestion" class="app_button_large liner" >
+					[ Save test results ]
+					</button>
+				</p>
+			</div>
+		</div>
+		<!-- //--->
+
+	
+		<!-- toolbox -->
+		<div id="toolbox">
+
+			<div style="float: left;">
+				{{#each leftButton}} <input class="button" type="button"
+					value="{{value}}" onclick="{{action}}" />{{/each}}
+			</div>
+			{{#if title}}
+			<h3 class="header">{{title}}</h3>
+			{{/if}}
+			<div style="float: right">
+				{{#each rightButton}} <input type="button" class="button"
+					value="{{value}}" onclick="{{action}}" />{{/each}}
+			</div>
+			<div style="clear:both"></div>
+
+		</div>
+	</span>
+</body>
+
+</html>
