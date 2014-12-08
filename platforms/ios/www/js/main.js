@@ -18,8 +18,8 @@ app.templates = {
 	resultPage : {
 		id : "#resultPage"
 	},
-	savedTestList:{
-		id:"#savedTestList"
+	savedTestList : {
+		id : "#savedTestList"
 	},
 	toolbox : {
 		id : "#toolbox"
@@ -47,6 +47,7 @@ var toolboxButtons = {
 var activeResults;
 var activeTest;
 var activeQuestion;
+var savedTests = new Array();
 
 function initTemplates() {
 	for ( var obj in app.templates) {
@@ -98,7 +99,7 @@ function startTest(testId) {
 
 	var htmlStr = app.templates.testStartPage.template(test);
 
-	showPage(htmlStr, toolboxContex,"right");
+	showPage(htmlStr, toolboxContex, "right");
 }
 
 function checkItem(optionId) {
@@ -199,7 +200,7 @@ function showPreviousQuestion() {
 		for (var i = 1; i < test.question.length; i++) {
 			var q = test.question[i];
 			if (q.id == activeQuestion) {
-				showQuestion(activeTest, test.question[--i].id,"left");
+				showQuestion(activeTest, test.question[--i].id, "left");
 				return;
 			}
 		}
@@ -208,7 +209,6 @@ function showPreviousQuestion() {
 
 function showNextQuestion() {
 
-	
 	var test = getTest(activeTest);
 
 	if (!activeQuestion) { // start of the test
@@ -234,7 +234,7 @@ function showNextQuestion() {
 	}
 }
 
-function showResults() {
+function showResults(savedResults) {
 	var test = getTest(activeTest);
 	var result = [];
 	var resultStr = ""; // used for combination type
@@ -270,7 +270,12 @@ function showResults() {
 	}
 
 	var toolbarContext = getToolboxObj();
-	toolbarContext.title = "Results for " + test.name;
+	if(savedResults){
+		toolbarContext.title = "Saved results for " + test.name;
+	}
+	else {
+		toolbarContext.title = "Results for " + test.name;
+	}
 	toolbarContext.leftButton.push(toolboxButtons.home);
 
 	var html = app.templates.resultPage.template({
@@ -279,29 +284,57 @@ function showResults() {
 	showPage(html, toolbarContext);
 }
 
-function showSavedTestList(arg){
-	if(arg==undefined){
-		alert("first load test saves");
-		loadSavedTests(showSavedTestList);
-	}
-	else{
-		alert("showSavedTestList show page ");
-		alert(arg);
-		
-	} 
-} 
+function showSavedTestList(arg) {
+	if (arg == undefined) {
 
-function mainSaveTest(){
-	alert("main save test ");
+		loadSavedTests(showSavedTestList);
+	} else {
+		
+		try {
+			savedTest = arg;
+			for (var i = 0; i < savedTest.length; i++) {
+				savedTest[i].orderNumber = i; 
+			}
+
+			var toolboxContext = getToolboxObj();
+			toolboxContext.title= "Saved tests";
+			toolboxContext.leftButton.push(toolboxButtons.home);
+			
+			var htmlString = app.templates.savedTestList.template({
+				"item" : savedTest
+			});
+			
+			showPage(htmlString, toolboxContext);
+			
+		} catch (e) {
+			alert(e);
+		}
+	}
+}
+function showSavedTest(orderNumber){
+	var results = savedTest[orderNumber];
+	var activeTest = results.id;
+	var activeResults = results;
+	showResults();
+}
+function test(){
+	var a =  new Array();
+	a.push({"date":99,"testName":"name", "testId":9});
+	a.push({"date":33,"testName":"name 33", "testId":9});
+	showSavedTestList(a);
+}
+
+function mainSaveTest() {
+
 	activeResults.testId = activeTest;
-	activeResults.testName =  getTest(activeTest).name;
+	activeResults.testName = getTest(activeTest).name;
 	activeResults.date = new Date().getTime();
-	
+
 	var str = JSON.stringify(activeResults);
-	saveTestResults(str,succcesTestSave );
-} 
-function succcesTestSave (){
-	alert("success test save ");
+	saveTestResults(str, succcesTestSave);
+}
+function succcesTestSave() {
+
 	showSavedTestList();
 }
 
@@ -322,7 +355,7 @@ app.containers = {
 var firstPage = true;
 
 function showPage(htmlString, toolboxContext, fromDirection) {
-	
+
 	var toDirection = fromDirection == "right" ? "left" : "right";
 
 	var currentPage = $("div.centerT");
@@ -373,7 +406,6 @@ function showAllTests(direction) {
 		test : new Array()
 	};
 
-	
 	var pageTemplate = app.templates.allTestPage.template;
 
 	var tests = app.tests.all;
@@ -384,8 +416,6 @@ function showAllTests(direction) {
 	var htmlStr = pageTemplate(context);
 	showPage(htmlStr, toolboxContext, direction);
 }
-
-
 
 function goHome() {
 	showAllTests("left");

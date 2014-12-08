@@ -5,7 +5,7 @@ var fsAction = undefined;
 var fsTestString = undefined;
 var fsCallback;
 
-var st = [];
+
 
 function loadSavedTests(callback) {
 	fsCallback = callback;
@@ -21,22 +21,22 @@ function saveTestResults(testString, callback) {
 }
 
 function ifFileExist(callback) {
-	
+
 	if (fileExist == undefined) {
-	
+
 		var fail = genericFail("Failed to load file system");
-	
+
 		window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, function(
 				fileSystem) {
-			
+
 			fileSystem.root.getFile(fileName, {
 				create : false
 			}, function() {
-			
+
 				fileExist = true;
 				callback();
 			}, function() {
-				
+
 				fileExist = false;
 				callback();
 			});
@@ -77,15 +77,15 @@ function gotFileEntry(fileEntry) {
 
 }
 function saveTest(writer) {
-	
+
 	writer.onwriteend = function() {
 		fsCallback();
 	};
-	alert("before saving  fileExist=" +fileExist + "writer.seek=" + writer.seek+ " writer.length="+writer.length);
+
 	if (fileExist)
-		writer.seek(writer.lenght);
+		writer.seek(writer.length);
 	writer.write(fsTestString);
-	
+
 	fileExist = true;
 }
 
@@ -93,9 +93,8 @@ function readFile(file) {
 	var reader = new FileReader();
 	reader.onloadend = function(evt) {
 		var fileStr = evt.target.result;
-		alert("fileString=" + fileStr);
 		// console.log(evt.target.result);
-		st = [];
+		var st = [];
 		eval(fileStr);
 		fsCallback(st);
 	};

@@ -96,6 +96,14 @@
 					<button id="showNextQuestion" class="app_button_large liner" onclick="mainSaveTest()" >
 					[ Save test results ]
 					</button>
+					
+					
+				</p>
+				<p>
+				<button id="showNextQuestion" class="app_button_large liner" onclick='test()' >
+					[ Save test results ]
+					</button>
+					
 				</p>
 			</div>
 		</div>
@@ -105,12 +113,13 @@
 		<!--Results page-->
 		<div id="savedTestList">
 			<div class="page">
-				<h3> Saved test list</h3>
+				<ul>
 				{{#each item}}
-				<p>
-				<p>{{name}} - {{date}}</p>
-				</p>
+				<li onclick="showSavedTest({{orderNumber}})">
+				{{testName}} - {{date}}
+				</li>
 				{{/each}}
+				</ul>
 			</div>
 		</div>
 		<!-- //--->
