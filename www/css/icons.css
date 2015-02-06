@@ -1,0 +1,67 @@
+.id10, .id9,
+.forest {
+    background-image: url(../img/tree.png)
+}
+
+.id11,
+.water {
+    background-image: url(../img/driving.jpg)
+}
+
+.id12,
+.vase {
+    background-image: url(../img/driving.jpg)
+}
+
+.id13,
+.knife {
+    background-image: url(../img/driving.jpg)
+}
+
+.id14,
+.horse {
+    background-image: url(../img/horse1.jpg)
+}
+
+.id15,
+.room {
+    background-image: url(../img/driving.jpg)
+}
+
+.id16,
+.beach {
+    background-image: url(../img/myBeach.png)
+}
+
+.id17,
+.driving {
+    background-image: url(../img/driving.jpg)
+}
+
+.id18,
+.superhero {
+    background-image: url(../img/driving.jpg)
+}
+
+.id19,
+.walking {
+    background-image: url(../img/driving.jpg)
+}
+
+.id20,
+.knowyorself {
+    background-image: url(../img/driving.jpg)
+}
+
+
+.facebook{
+    background-image: url(../img/facebook.png)
+} 
+
+.home{
+    background-image: url(../img/home-128.png);
+}
+
+.contextMenu{
+    background-image: url(../img/menu-128.png);
+}

@@ -1,4 +1,4 @@
-define(function tests() {
+function getEnTests() {
     var arr = [
         {
             "id": "9",
@@ -2148,6 +2148,4 @@ define(function tests() {
 
         "all": arr
     };
-})
-
-//alert("test.en.js")
+};

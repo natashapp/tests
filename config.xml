@@ -7,7 +7,7 @@
     <author email="natasha.kuzmanoska@gmail.com" href="http://cordova.io">
         Apache Cordova Team
     </author>
-    <preference name="DisallowOverscroll" value="true" />
+    <preference name="DisallowOverscroll" value="false" />
     <preference name="Orientation" value="landscape" />
     <preference name="StatusBarOverlaysWebView" value="false" />
     <preference name="StatusBarBackgroundColor" value="#000000" />

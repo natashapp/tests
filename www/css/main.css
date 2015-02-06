@@ -1,0 +1,220 @@
+* {
+    /* font-family: "FreightText BookItalic",serif;*/
+    /* font-family: "Avenir LT W01 45 Book", sans-serif;*/
+}
+
+html,
+body {
+    padding: 0px;
+    margin: 0px;
+    height: 100%;
+    width: 100%;
+    font-family: "adobe-clean", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 1rem;
+    font-weight: 200;
+    line-height: 18px;
+    overflow-x: hidden;
+}
+
+.pageT {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+    box-sizing: border-box;
+}
+
+.pageT.leftT {
+    -webkit-transform: translate3d(-100%, 0, 0);
+    transform: translate3d(-100%, 0, 0);
+}
+
+.pageT.centerT {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+}
+
+.pageT.rightT {
+    -webkit-transform: translate3d(100%, 0, 0);
+    transform: translate3d(100%, 0, 0);
+}
+
+.transitionT {
+    -webkit-transition-duration: .50s;
+    transition-duration: .50s;
+}
+
+.page {
+    padding: 20px 10px;
+}
+
+.nav {
+    background-color: #b3739c;
+    color: white;
+    height: 40px;
+    width: 100%;
+}
+
+.footer {
+    position: fixed;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+}
+
+.footer .button {
+    position: absolute;
+    top: 0px;
+    padding-right: 10px;
+    padding-left: 10px;
+    padding-top: 3px;
+    font-size: 0.9rem;
+    color: inherit;
+    background-color: inherit;
+    border: 0px;
+    cursor: pointer;
+}
+
+.footer .button.right {
+    right: 0px;
+}
+
+.footer .button.left {
+    left: 0px;
+}
+
+.footer .title {
+    margin: 10px 60px 10px 60px;
+    text-align: center;
+    overflow-x: hidden;
+    overflow-y: hidden;
+}
+
+.toolbar {
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+}
+
+.toolbar .button {
+    top: 0px;
+    position: absolute;
+    background-repeat: no-repeat;
+    height: 38px;
+    width: 38px;
+    background-position: center center;
+    background-size: 24px;
+    cursor: pointer;
+}
+
+.toolbar .button.left {
+    left: 0px;
+}
+
+.toolbar .button.right {
+    right: 0px;
+}
+
+.pageContainer {
+    position: fixed;
+    overflow-y: auto;
+    top: 40px;
+    right: 0px;
+    left: 0px;
+    bottom: 40px;
+}
+
+.toolbar .title {
+    margin: 10px 60px 10px 60px;
+    text-align: center;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    font-size: 16px;
+    height: 20px;
+}
+
+.tests {
+    list-style: none;
+    padding-left: 0px;
+    margin: 0px;
+    padding: 0px;
+}
+
+.tests li {
+    height: 50px;
+    padding-top: 10px;
+    border-bottom: 1px solid #dadfe0;
+    display: block;
+    background-position: 95% 50%;
+    background-repeat: no-repeat;
+    cursor: pointer;
+}
+
+.tests .go {
+    background-image: url(../img/breadcrumb.png);
+}
+
+test .lock {}
+
+.tests li .icon {
+    height: 40px;
+    width: 40px;
+    background-position: center center;
+    background-repeat: no-repeat;
+    float: left;
+    background-size: 30px 30px;
+    margin-left: 15px;
+}
+
+.clear {
+    clear: both;
+}
+
+.tests li .text {
+    margin-left: 15px;
+    padding-top: 3px;
+    float: left;
+    font-size: 0.8rem;
+}
+
+.tests li .text .name {
+    font-weight: 600;
+}
+
+.question {
+    list-style: none;
+    padding-left: 0px;
+    list-style-position: outside;
+}
+
+.question li {
+    padding-top: 7px;
+    padding-bottom: 7px;
+    background-repeat: no-repeat;
+    background-position: left center;
+    cursor: pointer;
+}
+
+
+
+.question li{
+    padding-left: 40px;
+}
+
+.question li.selected {
+    background-image: url(../img/circle-selected.png);
+}
+
+.question .unselected {
+    background-image: url(../img/circle.png);
+}
+
+h3,
+.pageHeader {
+    letter-spacing: 1px;
+    font-size: 16px;
+    line-height: 18px;
+    color: #4b433d;
+}
